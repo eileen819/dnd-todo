@@ -6,8 +6,6 @@ import { BiDotsHorizontalRounded } from "react-icons/bi";
 
 import EditContent from "./EditContent";
 
-const ToggleBox = styled.div``;
-
 const SelectMenu = styled.button`
   background-color: transparent;
   outline: none;
@@ -55,7 +53,8 @@ interface IToggleProp {
 function ToggleMenu({ boardId, index }: IToggleProp) {
   const [isEdit, setIsEdit] = useState(false);
   const [dropDown, setDropDown] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLButtonElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const setBoards = useSetRecoilState(boardState);
   const setToDos = useSetRecoilState(toDoState);
 
@@ -76,19 +75,24 @@ function ToggleMenu({ boardId, index }: IToggleProp) {
     });
     setDropDown(false);
   };
+
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      if (
+        modalRef.current &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
         setDropDown(false);
       }
     }
-    // 바깥 클릭 이벤트 리스너 추가
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [menuRef]);
+  }, []);
+
   return (
     <>
       {isEdit && (
@@ -100,15 +104,13 @@ function ToggleMenu({ boardId, index }: IToggleProp) {
           initialValue={boardId}
         />
       )}
-      <ToggleBox ref={menuRef}>
-        <SelectMenu onClick={() => setDropDown((prev) => !prev)}>
-          <BiDotsHorizontalRounded />
-        </SelectMenu>
-        <MenuBox $active={dropDown}>
-          <button onClick={onEditBoard}>edit</button>
-          <button onClick={onDeleteBoard}>delete</button>
-        </MenuBox>
-      </ToggleBox>
+      <SelectMenu ref={menuRef} onClick={() => setDropDown((prev) => !prev)}>
+        <BiDotsHorizontalRounded />
+      </SelectMenu>
+      <MenuBox ref={modalRef} $active={dropDown}>
+        <button onClick={onEditBoard}>edit</button>
+        <button onClick={onDeleteBoard}>delete</button>
+      </MenuBox>
     </>
   );
 }

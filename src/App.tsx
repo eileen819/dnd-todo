@@ -37,6 +37,7 @@ const Container = styled.div`
 const Title = styled.h1`
   align-self: flex-start;
   font-size: 28px;
+  font-weight: 800;
   color: #9f8af3;
   margin-bottom: 20px;
 `;

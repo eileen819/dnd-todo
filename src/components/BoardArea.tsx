@@ -18,6 +18,7 @@ const Wrapper = styled.div`
   padding: 50px 20px;
   border-radius: 30px;
   border: 1px solid #fff9bf;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
 `;
 
 function BoardArea() {

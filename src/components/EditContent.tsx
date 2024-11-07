@@ -5,13 +5,22 @@ import { boardState, toDoState } from "../atom";
 import { ImCancelCircle } from "react-icons/im";
 import { useEffect } from "react";
 
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+`;
+
 const Wrapper = styled.div`
   width: 300px;
   height: 100px;
   background-color: white;
   border: 1px solid black;
   border-radius: 15px;
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -109,19 +118,23 @@ function EditContent({
   }, [setFocus]);
 
   return (
-    <Wrapper>
-      <ExitBtn onClick={() => setIsEdit(false)}>
-        <ImCancelCircle size={18} />
-      </ExitBtn>
-      <EditForm onSubmit={handleSubmit(onValid)}>
-        <input
-          {...register("editedValue", { required: true })}
-          type="text"
-          placeholder="Write New board's name"
-        />
-        <button>edit</button>
-      </EditForm>
-    </Wrapper>
+    <Container>
+      <Wrapper>
+        <ExitBtn onClick={() => setIsEdit(false)}>
+          <ImCancelCircle size={18} />
+        </ExitBtn>
+        <EditForm onSubmit={handleSubmit(onValid)}>
+          <input
+            {...register("editedValue", { required: true })}
+            type="text"
+            placeholder={
+              mode === "board" ? "Write New board's name" : "Edit what to do"
+            }
+          />
+          <button>edit</button>
+        </EditForm>
+      </Wrapper>
+    </Container>
   );
 }
 
