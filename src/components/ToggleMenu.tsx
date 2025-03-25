@@ -11,9 +11,10 @@ const SelectMenu = styled.button`
   outline: none;
   border: none;
   cursor: pointer;
-  position: absolute;
-  right: 0;
-  bottom: 7px;
+  padding: 0 0 0 10px;
+  position: relative;
+  /* right: 0;
+  bottom: 7px; */
 `;
 
 const MenuBox = styled.div<{ $active: boolean }>`
@@ -26,7 +27,7 @@ const MenuBox = styled.div<{ $active: boolean }>`
   background-color: #fbfbfb;
   position: absolute;
   right: 0;
-  bottom: -40px;
+  bottom: -50px;
   display: flex;
   flex-direction: column;
   justify-content: center;

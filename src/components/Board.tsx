@@ -20,16 +20,22 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: relative;
+  margin-top: 5px;
+  margin-bottom: 10px;
 `;
 
 const BoardName = styled.h2`
-  text-align: center;
+  /* text-align: center; */
   font-weight: 600;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   font-size: 18px;
   cursor: grab;
   color: #303952;
+  flex-grow: 1;
 `;
 
 const Form = styled.form`

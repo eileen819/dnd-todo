@@ -13,8 +13,9 @@ const Card = styled.div<{ $isDragging: boolean }>`
   box-shadow: ${(props) =>
     props.$isDragging ? "0px 2px 5px rgba(0,0,0,0.1)" : "none"};
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  line-height: 1.5;
 `;
 const Text = styled.span`
   flex-grow: 1;
@@ -24,7 +25,7 @@ const EditBtn = styled.button`
   background-color: transparent;
   outline: none;
   border: none;
-  padding: 0;
+  padding: 0 0 0 10px;
   cursor: pointer;
   color: #546de5;
 `;

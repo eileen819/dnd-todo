@@ -39,7 +39,18 @@ export const toDoState = atom<IToDoState>({
     ({ setSelf }) => {
       const savedToDos = localStorage.getItem("toDos");
       if (savedToDos !== null) {
-        setSelf(JSON.parse(savedToDos));
+        try {
+          const parsedToDos = JSON.parse(savedToDos);
+          if (typeof parsedToDos === "object" && parsedToDos !== null) {
+            setSelf(parsedToDos);
+          } else {
+            console.log("Invalid data format in localStorage for toDos");
+            setSelf({ "To Do": [], Doing: [], Done: [] });
+          }
+        } catch (error) {
+          console.log("Invalid toDos data in localStorage:", error);
+          setSelf({ "To Do": [], Doing: [], Done: [] });
+        }
       }
     },
     ({ onSet }) => {
