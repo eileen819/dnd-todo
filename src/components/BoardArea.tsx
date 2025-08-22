@@ -19,6 +19,11 @@ const Wrapper = styled.div`
   border-radius: 30px;
   border: 1px solid #fff9bf;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+
+  @media ${({ theme }) => theme.media.mobile} {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 function BoardArea() {
@@ -30,7 +35,11 @@ function BoardArea() {
         <>
           <Wrapper ref={provided.innerRef} {...provided.droppableProps}>
             {boards.map((boardId, index) => (
-              <Board key={boardId} boardId={boardId} index={index} />
+              <Board
+                key={`${boardId}-${index}`}
+                boardId={boardId}
+                index={index}
+              />
             ))}
             {provided.placeholder}
             <CreateBoard />

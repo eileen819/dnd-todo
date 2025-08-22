@@ -14,6 +14,7 @@ interface ICardAreaProps {
 }
 
 const Area = styled.div<IAreaProps>`
+  width: 100%;
   background-color: ${(props) =>
     props.$isDraggingOver
       ? "#C6E7FF"
@@ -22,7 +23,11 @@ const Area = styled.div<IAreaProps>`
       : "transparent"};
   flex-grow: 1;
   transition: background-color 0.3s ease-in-out;
-  padding: 10px;
+  padding: 10px 0px;
+
+  @media ${({ theme }) => theme.media.desktop} {
+    width: 200px;
+  }
 `;
 
 function CardArea({ boardId }: ICardAreaProps) {

@@ -5,5 +5,10 @@ declare module "styled-components" {
     bgColor: string;
     boardColor: string;
     cardColor: string;
+    media: {
+      mobile: string;
+      tablet: string;
+      desktop: string;
+    };
   }
 }

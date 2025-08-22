@@ -8,7 +8,7 @@ import { memo } from "react";
 import ToggleMenu from "./ToggleMenu";
 
 const Wrapper = styled.div`
-  min-width: 200px;
+  width: 300px;
   min-height: 300px;
   background-color: ${(props) => props.theme.boardColor};
   padding: 10px;
@@ -17,6 +17,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   overflow: hidden;
   box-shadow: 2px 2px 7px rgba(86, 86, 86, 0.1);
+
+  @media ${({ theme }) => theme.media.desktop} {
+    width: 220px;
+  }
 `;
 
 const Title = styled.div`

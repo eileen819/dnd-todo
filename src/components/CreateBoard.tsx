@@ -9,7 +9,7 @@ interface ICategoryForm {
 }
 
 const CategoryForm = styled.form`
-  width: 200px;
+  width: 220px;
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -35,14 +35,26 @@ const CategoryForm = styled.form`
     border: none;
     color: #fff9bf;
   }
+  @media ${({ theme }) => theme.media.mobile} {
+    width: 100%;
+  }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    width: 300px;
+  }
 `;
 
 function CreateBoard() {
   const { register, handleSubmit, setValue } = useForm<ICategoryForm>();
-  const setBoards = useSetRecoilState(boardState);
+  const [boards, setBoards] = useRecoilState(boardState);
   const setToDos = useSetRecoilState(toDoState);
 
   const onValid = ({ boardName }: ICategoryForm) => {
+    if (boards.includes(boardName.trim())) {
+      alert("You already have a board with the same name.");
+      return;
+    }
+
     setBoards((oldBoards) => {
       return [...oldBoards, boardName];
     });
@@ -59,7 +71,9 @@ function CreateBoard() {
   return (
     <CategoryForm onSubmit={handleSubmit(onValid)}>
       <input
-        {...register("boardName", { required: true })}
+        {...register("boardName", {
+          required: true,
+        })}
         type="text"
         placeholder="Add New Board"
       />

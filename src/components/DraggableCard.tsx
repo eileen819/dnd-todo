@@ -15,10 +15,15 @@ const Card = styled.div<{ $isDragging: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  line-height: 1.5;
 `;
+
 const Text = styled.span`
   flex-grow: 1;
+  /* width: 155px; */
+  white-space: normal;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  line-height: 1.4;
 `;
 
 const EditBtn = styled.button`

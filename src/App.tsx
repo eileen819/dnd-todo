@@ -6,6 +6,7 @@ import reset from "styled-reset";
 import { boardState, toDoState } from "./atom";
 import BoardArea from "./components/BoardArea";
 import DeleteItem from "./components/DeleteItem";
+import { theme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -32,6 +33,13 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media ${({ theme }) => theme.media.mobile} {
+    max-width: 350px;
+  }
+  @media ${({ theme }) => theme.media.tablet} {
+    margin: 0px 20px;
+  }
 `;
 
 const Title = styled.h1`
@@ -40,6 +48,13 @@ const Title = styled.h1`
   font-weight: 800;
   color: #9f8af3;
   margin-bottom: 20px;
+
+  @media ${({ theme }) => theme.media.mobile} {
+    margin-left: 20px;
+  }
+  @media ${({ theme }) => theme.media.tablet} {
+    margin-left: 20px;
+  }
 `;
 
 const BoardWrapper = styled.div`
