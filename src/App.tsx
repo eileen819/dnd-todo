@@ -1,12 +1,11 @@
 import { DragDropContext, DropResult } from "@hello-pangea/dnd";
 import React from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import styled, { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import { boardState, toDoState } from "./atom";
 import BoardArea from "./components/BoardArea";
 import DeleteItem from "./components/DeleteItem";
-import { theme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
