@@ -81,7 +81,7 @@ function Board({ boardId, index }: IBoardProps) {
   };
 
   return (
-    <Draggable draggableId={boardId} index={index} key={boardId}>
+    <Draggable draggableId={boardId} index={index}>
       {(provided) => (
         <Wrapper ref={provided.innerRef} {...provided.draggableProps}>
           <Title {...provided.dragHandleProps}>

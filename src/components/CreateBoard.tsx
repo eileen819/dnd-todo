@@ -39,7 +39,7 @@ const CategoryForm = styled.form`
 
 function CreateBoard() {
   const { register, handleSubmit, setValue } = useForm<ICategoryForm>();
-  const [boards, setBoards] = useRecoilState(boardState);
+  const setBoards = useSetRecoilState(boardState);
   const setToDos = useSetRecoilState(toDoState);
 
   const onValid = ({ boardName }: ICategoryForm) => {

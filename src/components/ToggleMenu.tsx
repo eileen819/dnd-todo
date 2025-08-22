@@ -65,16 +65,19 @@ function ToggleMenu({ boardId, index }: IToggleProp) {
   };
 
   const onDeleteBoard = () => {
-    setBoards((boards) => {
-      const newBoards = boards.filter((_, i) => i !== index);
-      return newBoards;
-    });
-    setToDos((oldToDos) => {
-      const newToDos = { ...oldToDos };
-      delete newToDos[boardId];
-      return newToDos;
-    });
-    setDropDown(false);
+    const answer = window.confirm("Do you really want to delete a board?");
+    if (answer) {
+      setBoards((boards) => {
+        const newBoards = boards.filter((_, i) => i !== index);
+        return newBoards;
+      });
+      setToDos((oldToDos) => {
+        const newToDos = { ...oldToDos };
+        delete newToDos[boardId];
+        return newToDos;
+      });
+      setDropDown(false);
+    }
   };
 
   useEffect(() => {

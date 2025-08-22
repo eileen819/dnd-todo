@@ -49,10 +49,10 @@ const BoardWrapper = styled.div`
 
 function App() {
   const setBoards = useSetRecoilState(boardState);
-  const [toDos, setToDos] = useRecoilState(toDoState);
+  const setToDos = useSetRecoilState(toDoState);
 
   const onDragEnd = (info: DropResult) => {
-    const { destination, source, draggableId, type } = info;
+    const { destination, source, draggableId } = info;
 
     if (!destination) return;
 
@@ -67,30 +67,29 @@ function App() {
       return;
     }
 
-    if (destination.droppableId === "trashcan") {
-      if (type === "board") {
-        // 1) 보드스테이트에서 삭제
-        setBoards((boards) => {
-          const newBoards = boards.filter((_, index) => index !== source.index);
-          return newBoards;
-        });
-        // 2) 해당 보드 이름의 투두 항목 전체 삭제
-        setToDos((allBoards) => {
-          const BoardCopy = { ...allBoards };
-          delete BoardCopy[draggableId];
-          return BoardCopy;
-        });
-        return;
-      }
-      if (type === "card") {
-        setToDos((allBoards) => {
-          const newToDos = allBoards[source.droppableId].filter(
-            (_, index) => index !== source.index
-          );
-          return { ...allBoards, [source.droppableId]: newToDos };
-        });
-        return;
-      }
+    // 보드 및 카드의 삭제
+    if (destination.droppableId === "trashcan-board") {
+      // 1) 보드스테이트에서 삭제
+      setBoards((boards) => {
+        const newBoards = boards.filter((_, index) => index !== source.index);
+        return newBoards;
+      });
+      // 2) 해당 보드 이름의 투두 항목 전체 삭제
+      setToDos((allBoards) => {
+        const BoardCopy = { ...allBoards };
+        delete BoardCopy[draggableId];
+        return BoardCopy;
+      });
+      return;
+    }
+    if (destination.droppableId === "trashcan-card") {
+      setToDos((allBoards) => {
+        const newToDos = allBoards[source.droppableId].filter(
+          (_, index) => index !== source.index
+        );
+        return { ...allBoards, [source.droppableId]: newToDos };
+      });
+      return;
     }
 
     // 같은 보드 안에서 투두아이템 재정렬
