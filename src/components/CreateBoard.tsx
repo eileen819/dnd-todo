@@ -9,7 +9,7 @@ interface ICategoryForm {
 }
 
 const CategoryForm = styled.form`
-  width: 220px;
+  width: 300px;
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -35,12 +35,8 @@ const CategoryForm = styled.form`
     border: none;
     color: #fff9bf;
   }
-  @media ${({ theme }) => theme.media.mobile} {
-    width: 100%;
-  }
-
-  @media ${({ theme }) => theme.media.tablet} {
-    width: 300px;
+  @media ${({ theme }) => theme.media.desktop} {
+    width: 220px;
   }
 `;
 
