@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { toDoState } from "../atom";
 import { useSetRecoilState } from "recoil";
 import CardArea from "./CardArea";
-import { memo } from "react";
+import { memo, useRef } from "react";
 import ToggleMenu from "./ToggleMenu";
 
 const Wrapper = styled.div`
@@ -69,6 +69,8 @@ interface IForm {
 function Board({ boardId, index }: IBoardProps) {
   const setToDos = useSetRecoilState(toDoState);
   const { register, handleSubmit, setValue } = useForm<IForm>();
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
   const onValid = ({ toDo }: IForm) => {
     const newToDo = {
       id: Date.now(),
@@ -82,6 +84,7 @@ function Board({ boardId, index }: IBoardProps) {
       };
     });
     setValue("toDo", "");
+    inputRef.current?.blur();
   };
 
   return (
@@ -95,6 +98,10 @@ function Board({ boardId, index }: IBoardProps) {
           <Form onSubmit={handleSubmit(onValid)}>
             <input
               {...register("toDo", { required: true })}
+              ref={(el) => {
+                register("toDo").ref(el);
+                inputRef.current = el;
+              }}
               type="text"
               placeholder={`Add task on ${boardId}`}
             />

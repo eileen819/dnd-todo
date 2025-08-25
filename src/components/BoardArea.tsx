@@ -30,11 +30,7 @@ function BoardArea() {
         <>
           <Wrapper ref={provided.innerRef} {...provided.droppableProps}>
             {boards.map((boardId, index) => (
-              <Board
-                key={`${boardId}-${index}`}
-                boardId={boardId}
-                index={index}
-              />
+              <Board key={boardId} boardId={boardId} index={index} />
             ))}
             {provided.placeholder}
             <CreateBoard />

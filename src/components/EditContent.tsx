@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { boardState, toDoState } from "../atom";
 import { ImCancelCircle } from "react-icons/im";
@@ -76,11 +76,15 @@ function EditContent({
   const { register, handleSubmit, setValue, setFocus } = useForm<IEditForm>({
     defaultValues: { editedValue: initialValue },
   });
-  const setBoards = useSetRecoilState(boardState);
+  const [boards, setBoards] = useRecoilState(boardState);
   const setTodos = useSetRecoilState(toDoState);
 
   const onValid = ({ editedValue }: IEditForm) => {
     if (mode === "board") {
+      if (boards.includes(editedValue.trim())) {
+        alert("You already have a board with the same name.");
+        return;
+      }
       setTodos((oldToDos) => {
         const newToDos = { ...oldToDos };
         const newNameToDos = newToDos[boardId];

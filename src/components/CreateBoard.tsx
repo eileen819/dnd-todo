@@ -3,6 +3,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { boardState, toDoState } from "../atom";
 import { FaPlus } from "react-icons/fa";
+import { useRef } from "react";
 
 interface ICategoryForm {
   boardName: string;
@@ -44,6 +45,7 @@ function CreateBoard() {
   const { register, handleSubmit, setValue } = useForm<ICategoryForm>();
   const [boards, setBoards] = useRecoilState(boardState);
   const setToDos = useSetRecoilState(toDoState);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const onValid = ({ boardName }: ICategoryForm) => {
     if (boards.includes(boardName.trim())) {
@@ -62,6 +64,7 @@ function CreateBoard() {
       };
     });
     setValue("boardName", "");
+    inputRef.current?.blur();
   };
 
   return (
@@ -70,6 +73,10 @@ function CreateBoard() {
         {...register("boardName", {
           required: true,
         })}
+        ref={(el) => {
+          register("boardName").ref(el);
+          inputRef.current = el;
+        }}
         type="text"
         placeholder="Add New Board"
       />
