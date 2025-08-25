@@ -6,6 +6,7 @@ import reset from "styled-reset";
 import { boardState, toDoState } from "./atom";
 import BoardArea from "./components/BoardArea";
 import DeleteItem from "./components/DeleteItem";
+import Footer from "./components/Footer";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -27,7 +28,8 @@ const GlobalStyle = createGlobalStyle`
 const Container = styled.div`
   max-width: 768px;
   margin: 0 auto;
-  padding: 50px 0px;
+  padding-top: 50px;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -150,6 +152,7 @@ function App() {
             <DeleteItem />
           </BoardWrapper>
         </DragDropContext>
+        <Footer />
       </Container>
     </>
   );
