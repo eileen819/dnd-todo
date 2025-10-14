@@ -100,10 +100,15 @@ React 애플리케이션을 정적 파일로 빌드한 후, `gh-pages` 브랜치
 **프로젝트 클론**
 
 ```bash
-$ git clone https://github.com/eileen819/dnd-todo.git
-$ cd dnd-todo
-$ npm install
-$ npm start
+# 프로젝트 클론
+git clone https://github.com/eileen819/dnd-todo.git
+cd dnd-todo
+
+# 의존성 설치
+npm install
+
+# 개발 서버 실행
+npm start
 ```
 
   <br/>
