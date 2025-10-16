@@ -1,8 +1,8 @@
 # 📋 To-Do Board
 
 **To-Do Board: Drag & Drop으로 편리하게 할 일을 관리하세요!**  
-사이트 주소와 화면 캡쳐해서 넣기  
-🔗 **배포 주소:** [DnD Board](https://eileen819.github.io/dnd-todo)
+![UI Preview](./public/preview.png)
+🔗 **Demo:** [DnD Board](https://eileen819.github.io/dnd-todo)
 
   <br/>
 
@@ -79,6 +79,7 @@ src
  ┃ ┣ DeleteItem.tsx
  ┃ ┣ DraggableCard.tsx
  ┃ ┣ EditContent.tsx
+ ┃ ┣ Footer.tsx
  ┃ ┗ ToggleMenu.tsx
  ┣ App.tsx
  ┣ atom.tsx
