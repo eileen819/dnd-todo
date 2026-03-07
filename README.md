@@ -2,10 +2,8 @@
 
 ### 📌 To-Do Board: Drag & Drop으로 편리하게 할 일을 관리하세요!
 
-![UI Preview](./public/preview.png)
 🔗 **Demo:** [DnD Board](https://eileen819.github.io/dnd-todo)
-
-  <br/>
+![UI Preview](./public/images/dnd_image.png)
 
 ## 📌 프로젝트 개요
 
@@ -17,6 +15,8 @@
 
 ## 💡 주요 기능
 
+![UI Preview](./public/images/gif-img.gif)
+
 ### ✅ Drag & Drop 기반 직관적 관리
 
 - `@hello-pangea/dnd` 라이브러리를 활용하여 카테고리 및 To-Do 항목을 자유롭게 이동시킬 수 있음
@@ -26,6 +26,9 @@
 
 - 사용자가 필요한 만큼 새로운 보드 생성 가능
 - 각 보드는 독립적인 To-Do 리스트를 가질 수 있으며, 프로젝트·개인 업무 등 다양한 목적에 맞게 분류 가능
+  <br />
+
+![UI Preview](./public/images/del-gif.gif)
 
 ### ✅ 간편한 수정 & 삭제
 
@@ -58,7 +61,7 @@
 
 ## 🏗️ 시스템 아키텍처
 
-![Architecture Diagram](./public/architecture.png)  
+![Architecture Diagram](./public/images/architecture.png)  
  <br/>
 
 ## 📁 프로젝트 구조
